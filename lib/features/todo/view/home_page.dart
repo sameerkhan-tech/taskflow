@@ -27,6 +27,10 @@ class _HomePageState extends State<HomePage> {
         builder: (context, state) {
           return CustomScrollView(
             slivers: [
+              SliverAppBar(
+                title: Text(greetingMessage()),
+                titleTextStyle: theme.textTheme.titleMedium,
+              ),
               // Initial loader
               if (state.isInitialLoading)
                 const SliverFillRemaining(
@@ -72,9 +76,10 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 )
+              // List UI
               else
                 SliverPadding(
-                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 40),
+                  padding: EdgeInsets.symmetric(horizontal: 16),
                   sliver: SliverList.builder(
                     itemCount: state.data.length,
                     itemBuilder: (context, index) {
@@ -161,7 +166,6 @@ class _HomePageState extends State<HomePage> {
                                       theme: theme,
                                       child: Row(
                                         mainAxisSize: MainAxisSize.min,
-
                                         children: [
                                           Icon(
                                             Icons.calendar_month,
@@ -230,5 +234,21 @@ class _HomePageState extends State<HomePage> {
       ),
       child: child,
     );
+  }
+}
+
+String greetingMessage() {
+  final int hour = DateTime.now().hour;
+
+  if (hour < 5) {
+    return "Hello, Night Owl 🌙";
+  } else if (hour > 5 && hour < 12) {
+    return "Hello, Good morning 🌄";
+  } else if (hour > 12 && hour < 17) {
+    return "Hello, Good afternoon ☀️";
+  } else if (hour > 17 && hour < 21) {
+    return "Hello, Good evening 🌇";
+  } else {
+    return "Hello, Working late? 🌛";
   }
 }
