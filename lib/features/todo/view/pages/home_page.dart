@@ -229,14 +229,13 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
- String _greetingMessage() {
-  final hour = DateTime.now().hour;
+  String _greetingMessage() {
+    final hour = DateTime.now().hour;
 
-  if (hour < 5) return "Hello, Night Owl 🌙";
-  if (hour < 12) return "Hello, Good morning 🌄";
-  if (hour < 17) return "Hello, Good afternoon ☀️";
-  if (hour < 21) return "Hello, Good evening 🌇";
-
-  return "Hello, Working late? 🌛";
-}
+    if (hour < 5) return "Hello, Night Owl 🌙";
+    if (hour < 12) return "Hello, Good morning 🌄";
+    if (hour < 17) return "Hello, Good afternoon ☀️";
+    if (hour < 21) return "Hello, Good evening 🌇";
+    return "Hello, Working late? 🌛";
+  }
 }
